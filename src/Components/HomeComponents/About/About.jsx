@@ -5,7 +5,7 @@ import animationData from "/public/AnimationData.json";
 
 const About = () => {
   return (
-    <div className="bg-linear-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] pt-16 lg:pt-0">
+    <div id="About" className="bg-linear-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] pt-16 lg:pt-0">
       <h1 className="text-4xl font-bold text-center mb-8 text-fuchsia-500">
         About Me
       </h1>

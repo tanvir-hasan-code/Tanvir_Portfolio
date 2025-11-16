@@ -35,7 +35,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative lg:pb-32 bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] text-white overflow-hidden">
+    <div id="Home" className="relative lg:pb-20 bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] text-white overflow-hidden">
       <div className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto px-6 mt-32 lg:mt-40">
         {/* Left Text Container */}
         <div className="lg:w-2/3 relative" data-aos="fade-right">
@@ -69,8 +69,8 @@ const Banner = () => {
           <div className="flex gap-4 mb-10 relative z-10 flex-wrap">
             {/* Get Resume */}
             <a
-              href="/Tanvir_Resume (2.0).pdf"
-              download="Tanvir_Resume (2.0).pdf"
+              href="https://drive.google.com/file/d/1iPGrmmCLJSuulnuG48nlyuUaFPb1-9P1/view?usp=drive_link"
+			  target="blank"
               className="relative px-7 py-3 rounded-xl font-semibold overflow-hidden text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 transition-all duration-500 hover:scale-105"
             >
               <span className="relative z-10">Get Resume</span>

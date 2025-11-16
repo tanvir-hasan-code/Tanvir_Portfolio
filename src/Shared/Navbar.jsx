@@ -1,7 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Menu, X, House, Terminal, GraduationCap, Layers, Send, Code, User } from "lucide-react";
-import "./Navbar.css"
+import {
+  Menu,
+  X,
+  House,
+  Terminal,
+  GraduationCap,
+  Layers,
+  Send,
+  Code,
+  User,
+} from "lucide-react";
+import "./Navbar.css";
+import { Link } from "react-scroll";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -21,24 +32,29 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="
+    <nav
+      className="
       fixed left-1 right-1 top-0 z-50 py-2 
       flex justify-between items-center max-w-7xl mx-auto w-full px-6
       backdrop-blur-md bg-linear-to-r from-[#140021]/60 via-[#1a0033]/60 to-[#140021]/60
       border border-purple-500/30 rounded-xl mt-3
       shadow-[0_0_20px_rgba(138,43,226,0.15)]
-    ">
-      
+    "
+    >
       {/* Logo */}
-      <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-2">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="flex items-center gap-2"
+      >
         <img
           className="w-14 h-14 object-contain drop-shadow-[0_0_10px_#b026ff]"
           src="/main-logo.png"
           alt="Logo"
         />
-        <h2 className="text-xl font-bold bg-clip-text text-transparent 
-          bg-linear-to-r from-fuchsia-400 via-purple-400 to-indigo-400">
-        </h2>
+        <h2
+          className="text-xl font-bold bg-clip-text text-transparent 
+          bg-linear-to-r from-fuchsia-400 via-purple-400 to-indigo-400"
+        ></h2>
       </motion.div>
 
       {/* Desktop Menu */}
@@ -49,13 +65,17 @@ export default function Navbar() {
             whileHover={{ scale: 1.1 }}
             className="relative group text-white flex items-center gap-1"
           >
-            <a
-              href={`#${item.name.toLowerCase()}`}
-              className="flex items-center gap-1 hover:text-fuchsia-400 transition"
+            <Link
+              to={item.name}
+              smooth={true}
+              duration={1000}
+              spy={true}
+              offset={-80}
+              className="flex items-center gap-1  hover:text-fuchsia-400 transition cursor-pointer"
             >
               {item.icon}
               {item.name}
-            </a>
+            </Link>
             <div
               className="absolute bottom-0 left-0 w-full h-[2px] 
               bg-linear-to-r from-fuchsia-400 to-indigo-400 scale-x-0 
@@ -86,7 +106,10 @@ export default function Navbar() {
       </motion.a>
 
       {/* Mobile Menu Toggle */}
-      <div className="lg:hidden cursor-pointer text-white" onClick={() => setOpen(!open)}>
+      <div
+        className="lg:hidden cursor-pointer text-white"
+        onClick={() => setOpen(!open)}
+      >
         {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
       </div>
 
@@ -104,18 +127,22 @@ export default function Navbar() {
           "
         >
           {navItems.map((item) => (
-            <motion.li 
-              key={item.name} 
-              whileHover={{ scale: 1.07 }} 
+            <motion.li
+              key={item.name}
+              whileHover={{ scale: 1.07 }}
               className="flex items-center gap-2"
             >
               {item.icon}
-              <a 
-                href={`#${item.name.toLowerCase()}`} 
+              <Link
+                to={`${item.name}`}
+                smooth={true}
+                duration={1000}
+                spy={true}
+                offset={-80}
                 onClick={handleMobileClick}
               >
                 {item.name}
-              </a>
+              </Link>
             </motion.li>
           ))}
 
@@ -124,16 +151,19 @@ export default function Navbar() {
             <a
               href="/Tanvir_Resume (2.0).pdf"
               download="Tanvir_Resume (2.0).pdf"
-              onClick={handleMobileClick}              
+              onClick={handleMobileClick}
               className="relative block px-6 py-2 rounded-xl font-semibold text-white overflow-hidden"
             >
-              <span className="
+              <span
+                className="
                 absolute inset-0 rounded-xl border-[2px] 
                 bg-linear-to-r from-fuchsia-500 via-purple-500 to-indigo-500 
                 bg-[length:200%_200%] animate-gradient-shift
-              "></span>
+              "
+              ></span>
               <span className="relative z-10 flex gap-2 items-center justify-center">
-                <Code size={18} />Resume
+                <Code size={18} />
+                Resume
               </span>
             </a>
           </motion.li>
