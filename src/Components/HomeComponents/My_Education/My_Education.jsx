@@ -1,77 +1,110 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   AcademicCapIcon,
   BuildingLibraryIcon,
   CalendarIcon,
   StarIcon,
-  BookOpenIcon,
-  InformationCircleIcon
+  InformationCircleIcon,
 } from "@heroicons/react/24/outline";
-
-const educationData = [
-  {
-    _id: "691a2d744fb4b1a58d5fc775",
-    id: 1,
-    degree: "Secondary School Certificate (SSC)",
-    institution: "Kagoil Koruna Kanta High School",
-    session: "2019-2020",
-    passingYear: 2021,
-    gpa: 4.33,
-    subjects: ["Physics", "Chemistry", "Biology", "Agriculture"],
-    description:
-      "Completed Secondary School Certificate with a strong focus on science and agriculture subjects, demonstrating consistent academic performance and curiosity in agricultural studies."
-  },
-  {
-    _id: "691a2d744fb4b1a58d5fc776",
-    id: 2,
-    degree: "Diploma in Agriculture",
-    institution: "Agriculture Training Institute, Gaibandha",
-    session: "2022 - Present",
-    passingYear: "Ongoing",
-    gpa: null,
-    subjects: ["Agriculture"],
-    description:
-      "Pursuing a Diploma in Agriculture to enhance practical knowledge and skills in modern farming techniques, crop management, and sustainable agriculture practices. Actively engaged in hands-on training and research projects."
-  }
-];
+import { useState } from "react";
+import useAxiosInstance from "../../../Hooks/useAxiosInstance";
 
 export default function EducationCards() {
+  const [educationData, setEducationData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+  const axiosInstance = useAxiosInstance();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axiosInstance.get("/education");
+        setEducationData(res.data);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch education data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [axiosInstance]);
+
+  if (loading) return <p className="text-white">Loading...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] flex flex-col items-center justify-center py-12 px-4">
-      <h1 className="text-3xl font-bold mb-3 text-white">My Education</h1>
-      <p className="text-center text-pink-200 mb-10 max-w-2xl">
-        Here is a summary of my academic journey so far, showcasing both my strong foundation
-        in science and my practical experience in agriculture. Each step represents
-        my dedication, curiosity, and continuous learning.
+    <div
+      id="Education"
+      className=" bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] flex flex-col items-center justify-center py-12 px-4"
+    >
+      {/* Heading */}
+      <h1 className="text-4xl font-bold mb-3 text-white text-center">
+        My Education
+      </h1>
+      <p className="text-center text-pink-200 mb-12 max-w-2xl">
+        Here is a summary of my academic journey so far, showcasing both my
+        strong foundation in science and practical experience in agriculture.
+        Each step represents dedication, curiosity, and continuous learning.
       </p>
 
-      <div className="grid md:grid-cols-2 gap-8 w-full max-w-6xl">
-        {educationData.map((edu) => (
+      {/* Cards */}
+      <div className="grid md:grid-cols-2 gap-10 w-full max-w-6xl">
+        {educationData.map((edu, idx) => (
           <div
             key={edu._id}
-            className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-6 shadow-xl transition-transform duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white/10"
+            data-aos="fade-up"
+            data-aos-delay={idx * 200}
+            data-aos-offset="200"
+            data-aos-duration="800"
+            data-aos-easing="ease-in-out"
+            className="relative bg-white/5 backdrop-blur-2xl border border-white rounded-3xl p-6
+                       shadow-lg transform transition-all duration-500 ease-in-out
+                       hover:bg-white/10 hover:shadow-2xl hover:shadow-fuchsia-500/50
+                       card-float"
           >
+            {/* Gradient border */}
+            <div className="absolute inset-0 rounded-3xl border-2 border-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 pointer-events-none blur-xl opacity-30"></div>
+
+            {/* Glowing underline */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-pink-500 rounded-full opacity-0 transition-all duration-500 ease-in-out hover:opacity-100 shadow-[0_0_15px_#FF0080]"></div>
+
             {/* Degree */}
-            <div className="flex items-center mb-2">
+            <div className="flex items-center mb-2 relative z-10">
               <AcademicCapIcon className="w-5 h-5 text-pink-400 mr-2" />
               <h2 className="text-xl font-semibold text-white">{edu.degree}</h2>
             </div>
 
             {/* Institution */}
-            <div className="flex items-center mb-1">
+            <div className="flex items-center mb-1 relative z-10">
               <BuildingLibraryIcon className="w-5 h-5 text-pink-300 mr-2" />
-              <h3 className="text-md font-medium text-pink-200">{edu.institution}</h3>
+              <h3 className="text-md font-medium text-pink-200">
+                {edu.institution}
+              </h3>
             </div>
 
             {/* Session & Passing Year */}
-            <div className="flex items-center text-sm text-pink-100 mb-2">
+            <div className="flex items-center text-sm text-pink-100 mb-2 relative z-10">
               <CalendarIcon className="w-4 h-4 mr-1" />
-              <span>Session: {edu.session} | Passing Year: {edu.passingYear}</span>
+              <span>
+                Session: {edu.session} | Passing Year: {edu.passingYear}
+              </span>
             </div>
 
-            {/* GPA as button-pill (only if exists) */}
+            {/* GPA */}
             {edu.gpa && (
-              <div className="flex items-center mb-2">
+              <div className="flex items-center mb-2 relative z-10">
                 <StarIcon className="w-4 h-4 mr-1 text-yellow-300" />
                 <span className="px-3 py-1 bg-pink-500/20 text-white rounded-full text-sm font-medium backdrop-blur-sm">
                   GPA: {edu.gpa}
@@ -79,8 +112,8 @@ export default function EducationCards() {
               </div>
             )}
 
-            {/* Subjects as pills */}
-            <div className="flex flex-wrap gap-2 mb-3">
+            {/* Subjects */}
+            <div className="flex flex-wrap gap-2 mb-3 relative z-10">
               {edu.subjects.map((sub, idx) => (
                 <span
                   key={idx}
@@ -92,13 +125,27 @@ export default function EducationCards() {
             </div>
 
             {/* Description */}
-            <div className="flex items-start text-pink-100 text-sm">
+            <div className="flex items-start text-pink-100 text-sm relative z-10">
               <InformationCircleIcon className="w-4 h-4 mr-2 mt-1" />
               <p>{edu.description}</p>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Hover floating animation */}
+      <style>{`
+        .card-float:hover {
+          animation: floatCard 0.8s ease-in-out forwards;
+        }
+        @keyframes floatCard {
+          0% { transform: translateY(0px) rotate(0deg) scale(1); }
+          25% { transform: translateY(-5px) rotate(1deg) scale(1.02); }
+          50% { transform: translateY(-10px) rotate(-1deg) scale(1.03); }
+          75% { transform: translateY(-5px) rotate(1deg) scale(1.02); }
+          100% { transform: translateY(0px) rotate(0deg) scale(1); }
+        }
+      `}</style>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Banner from '../HeroSection/Banner'
 import About from '../About/About'
 import MySkills from '../My_Skills/MySkills'
 import My_Education from '../My_Education/My_Education'
+import MyProject from '../Projects/MyProject'
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
 		  <Banner />
 		  <About />
 		  <MySkills />
-		  <My_Education/>
+		  <My_Education />
+		  <MyProject/>
 	  <Footer/>
 	</div>
   )

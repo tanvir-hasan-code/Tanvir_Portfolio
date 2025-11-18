@@ -30,12 +30,15 @@ const Banner = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true,
+      once: false,
     });
   }, []);
 
   return (
-    <div id="Home" className="relative lg:pb-20 bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] text-white overflow-hidden">
+    <div
+      id="Home"
+      className="relative lg:pb-20 bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] text-white overflow-hidden"
+    >
       <div className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto px-6 mt-32 lg:mt-40">
         {/* Left Text Container */}
         <div className="lg:w-2/3 relative" data-aos="fade-right">
@@ -70,7 +73,7 @@ const Banner = () => {
             {/* Get Resume */}
             <a
               href="https://drive.google.com/file/d/1iPGrmmCLJSuulnuG48nlyuUaFPb1-9P1/view?usp=drive_link"
-			  target="blank"
+              target="blank"
               className="relative px-7 py-3 rounded-xl font-semibold overflow-hidden text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 transition-all duration-500 hover:scale-105"
             >
               <span className="relative z-10">Get Resume</span>
@@ -126,16 +129,16 @@ const Banner = () => {
               <h3 className="text-lg font-semibold mb-3">Familiar With:</h3>
               <div className="flex flex-wrap gap-4">
                 <span className="flex items-center gap-2 px-4 py-2 border border-cyan-400 rounded-full text-cyan-300 hover:bg-cyan-400/20 transition-all duration-300">
-                  <FaReact /> 
+                  <FaReact />
                 </span>
                 <span className="flex items-center gap-2 px-4 py-2 border border-black rounded-full text-white hover:bg-gray-800/30 transition-all duration-300">
                   <SiNextdotjs />
                 </span>
                 <span className="flex items-center gap-2 px-4 py-2 border border-green-400 rounded-full text-green-300 hover:bg-green-400/20 transition-all duration-300">
-                  <SiMongodb /> 
+                  <SiMongodb />
                 </span>
                 <span className="flex items-center gap-2 px-4 py-2 border border-green-500 rounded-full text-green-300 hover:bg-green-500/20 transition-all duration-300">
-                  <FaNodeJs /> 
+                  <FaNodeJs />
                 </span>
               </div>
             </div>
@@ -143,7 +146,10 @@ const Banner = () => {
         </div>
 
         {/* Right Profile Image */}
-        <div className="lg:w-1/3 flex justify-end mt-10 lg:mt-0 relative" data-aos="fade-left">
+        <div
+          className="lg:w-1/3 flex justify-end mt-10 lg:mt-0 relative"
+          data-aos="fade-left"
+        >
           <div className="absolute w-80 h-80 rounded-full bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 opacity-20 blur-3xl -z-10"></div>
           <div className="w-96 h-96 rounded-full overflow-hidden border-[5px] border-gradient-to-r from-fuchsia-400 via-purple-400 to-indigo-400 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/70">
             <img
