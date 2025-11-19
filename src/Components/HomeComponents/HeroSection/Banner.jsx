@@ -10,8 +10,9 @@ import {
 import { SiNextdotjs, SiMongodb } from "react-icons/si";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ContactModal from "../ContactModal/ContactModal";
 
-const Banner = () => {
+const Banner = ({onContactClick}) => {
   const [developerText] = useTypewriter({
     words: [
       "Frontend Developer",
@@ -82,6 +83,7 @@ const Banner = () => {
             {/* Contact Me */}
             <a
               href="#contact"
+              onClick={onContactClick}
               className="relative px-7 py-3 rounded-xl font-semibold border border-purple-400 text-purple-300 bg-purple-500/10 overflow-hidden transition-all duration-500 hover:bg-purple-500/20 hover:scale-105"
             >
               <span className="relative z-10">Contact Me</span>

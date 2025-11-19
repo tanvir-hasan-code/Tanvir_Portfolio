@@ -14,7 +14,7 @@ import {
 import "./Navbar.css";
 import { Link } from "react-scroll";
 
-export default function Navbar() {
+export default function Navbar({ onContactClick }) {
   const [open, setOpen] = React.useState(false);
 
   const navItems = [
@@ -65,21 +65,31 @@ export default function Navbar() {
             whileHover={{ scale: 1.1 }}
             className="relative group text-white flex items-center gap-1"
           >
-            <Link
-              to={item.name}
-              smooth={true}
-              duration={1000}
-              spy={true}
-              offset={-80}
-              className="flex items-center gap-1  hover:text-fuchsia-400 transition cursor-pointer"
-            >
-              {item.icon}
-              {item.name}
-            </Link>
+            {item.name === "Contact" ? (
+              <button
+                onClick={onContactClick} // এখানে ফাংশন কল হচ্ছে
+                className="flex items-center gap-1 hover:text-fuchsia-400 transition cursor-pointer bg-transparent border-none"
+              >
+                {item.icon}
+                {item.name}
+              </button>
+            ) : (
+              <Link
+                to={item.name}
+                smooth={true}
+                duration={1000}
+                spy={true}
+                offset={-80}
+                className="flex items-center gap-1 hover:text-fuchsia-400 transition cursor-pointer"
+              >
+                {item.icon}
+                {item.name}
+              </Link>
+            )}
             <div
               className="absolute bottom-0 left-0 w-full h-[2px] 
-              bg-linear-to-r from-fuchsia-400 to-indigo-400 scale-x-0 
-              group-hover:scale-x-100 transition-transform origin-left"
+        bg-linear-to-r from-fuchsia-400 to-indigo-400 scale-x-0 
+        group-hover:scale-x-100 transition-transform origin-left"
             ></div>
           </motion.li>
         ))}
@@ -132,17 +142,29 @@ export default function Navbar() {
               whileHover={{ scale: 1.07 }}
               className="flex items-center gap-2"
             >
-              {item.icon}
-              <Link
-                to={`${item.name}`}
-                smooth={true}
-                duration={1000}
-                spy={true}
-                offset={-80}
-                onClick={handleMobileClick}
-              >
-                {item.name}
-              </Link>
+              {item.name === "Contact" ? (
+                <button
+                  onClick={() => {
+                    onContactClick();
+                    handleMobileClick(); // mobile menu auto close
+                  }}
+                  className="flex items-center gap-2 bg-transparent border-none"
+                >
+                  {item.icon}
+                  {item.name}
+                </button>
+              ) : (
+                <Link
+                  to={`${item.name}`}
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  offset={-80}
+                  onClick={handleMobileClick}
+                >
+                  {item.name}
+                </Link>
+              )}
             </motion.li>
           ))}
 
