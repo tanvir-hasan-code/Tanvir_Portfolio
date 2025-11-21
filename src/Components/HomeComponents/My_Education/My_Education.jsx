@@ -50,7 +50,7 @@ export default function EducationCards() {
       className=" bg-gradient-to-b from-[#0A0118] via-[#0D0220] to-[#0A0118] flex flex-col items-center justify-center py-12 px-4"
     >
       {/* Heading */}
-      <h1 className="text-4xl font-bold mb-3 text-white text-center">
+      <h1 className="text-4xl font-bold mb-3 text-fuchsia-500 text-center">
         My Education
       </h1>
       <p className="text-center text-pink-200 mb-12 max-w-2xl">

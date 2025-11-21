@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MessageCircle, Linkedin, X } from "lucide-react";
+import { Phone, Mail, MessageCircle, Linkedin, X, Facebook, Github } from "lucide-react";
 import Lottie from "lottie-react";
 import useAxiosInstance from "../../../Hooks/useAxiosInstance";
 import contactAnimated from "/public/contactAnimation.json";
 
-const iconMap = { Phone, Mail, MessageCircle, Linkedin };
+const iconMap = { Phone, Mail, MessageCircle, Linkedin, Facebook, Github };
 
 export default function ContactModal({ onClose }) {
   const axiosInstance = useAxiosInstance();

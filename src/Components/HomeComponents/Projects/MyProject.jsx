@@ -31,7 +31,7 @@ const MyProject = () => {
       id="Projects"
       className="py-16 bg-gradient-to-b from-[#0A0118] via-[#120224] to-[#0A0118] text-white"
     >
-      <h1 className="text-4xl font-bold text-center mb-4">My Projects</h1>
+      <h1 className="text-4xl font-bold text-center mb-4 text-fuchsia-500">My Projects</h1>
       <p className="text-center mb-12 text-pink-200">
         Here are some of my best projects with smooth preview animations.
       </p>
