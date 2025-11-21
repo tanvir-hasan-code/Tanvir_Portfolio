@@ -73,7 +73,7 @@ const Banner = ({onContactClick}) => {
           <div className="flex gap-4 mb-10 relative z-10 flex-wrap">
             {/* Get Resume */}
             <a
-              href="https://drive.google.com/file/d/1iPGrmmCLJSuulnuG48nlyuUaFPb1-9P1/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1-x0nXFYdwMK7wJYb6-Bj3_cWAak8o-eV/view?usp=drive_link"
               target="blank"
               className="relative px-7 py-3 rounded-xl font-semibold overflow-hidden text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 transition-all duration-500 hover:scale-105"
             >
