@@ -3,8 +3,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ExternalLink, Github, Server, Laptop } from "lucide-react";
 import useAxiosInstance from "../../../Hooks/useAxiosInstance";
+import AllProjectModal from "./allProjectModal";
 
-const MyProject = () => {
+const MyProject = ({onAllProjectsClick}) => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const axiosInstance = useAxiosInstance();
@@ -31,7 +32,9 @@ const MyProject = () => {
       id="Projects"
       className="py-16 bg-gradient-to-b from-[#0A0118] via-[#120224] to-[#0A0118] text-white"
     >
-      <h1 className="text-4xl font-bold text-center mb-4 text-fuchsia-500">My Projects</h1>
+      <h1 className="text-4xl font-bold text-center mb-4 text-fuchsia-500">
+        My Projects
+      </h1>
       <p className="text-center mb-12 text-pink-200">
         Here are some of my best projects with smooth preview animations.
       </p>
@@ -113,7 +116,12 @@ const MyProject = () => {
           </div>
         ))}
       </div>
-
+      <a
+        onClick={onAllProjectsClick}
+        className=" px-7 py-3 cursor-pointer flex mx-auto w-fit mt-14 rounded-xl font-semibold overflow-hidden text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 transition-all duration-500 hover:scale-105"
+      >
+          <span className="z-10">See All-Poject</span>
+      </a>
       {/* -------- MODAL -------- */}
       {selectedProject && (
         <div

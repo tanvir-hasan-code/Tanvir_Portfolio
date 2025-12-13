@@ -8,9 +8,11 @@ import My_Education from "../My_Education/My_Education";
 import MyProject from "../Projects/MyProject";
 import { useState } from "react";
 import ContactModal from "../ContactModal/ContactModal";
+import AllProjectModal from "../Projects/allProjectModal";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProjectModal, setProjectModalOpen] = useState(false);
   return (
     <div>
       <Navbar onContactClick={() => setIsModalOpen(true)}/>
@@ -18,10 +20,11 @@ export default function Home() {
       <About />
       <MySkills />
       <My_Education />
-      <MyProject />
+      <MyProject onAllProjectsClick={() => setProjectModalOpen(true)}/>
       <Footer />
 
-      {isModalOpen &&   <ContactModal onClose={()=>setIsModalOpen(false)}/>}
+      {isModalOpen && <ContactModal onClose={() => setIsModalOpen(false)} />}
+      {isProjectModal && <AllProjectModal onClose={()=> setProjectModalOpen(false)}/> }
     </div>
   );
 }

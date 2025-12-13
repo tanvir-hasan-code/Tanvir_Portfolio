@@ -57,7 +57,7 @@ export default function ContactModal({ onClose }) {
           onClick={onClose}
           className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
         >
-          <X size={28} />
+          <X size={28}/>
         </button>
 
         {/* Lottie Animation */}
