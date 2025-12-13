@@ -77,10 +77,8 @@ const AllProjectModal = ({ onClose }) => {
                 </h3>
                 <p className="text-xs text-white/60 mt-0.5">{project.desc}</p>
               </div>
-
               {/* Buttons */}
-              {/* Buttons */}
-              <div className="flex gap-2 shrink-0">
+              <div className="grid md:flex flex-wrap gap-2 shrink-0">
                 {project.liveSite && (
                   <a
                     href={project.liveSite}
