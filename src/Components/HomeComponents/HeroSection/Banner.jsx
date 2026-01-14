@@ -155,7 +155,7 @@ const Banner = ({ onContactClick }) => {
           <div className="absolute w-80 h-80 rounded-full bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 opacity-20 blur-3xl -z-10"></div>
           <div className="w-96 h-96 rounded-full overflow-hidden border-[5px] border-gradient-to-r from-fuchsia-400 via-purple-400 to-indigo-400 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/70">
             <img
-              src="/Tanvir_banner.JPG"
+              src="/Banner_Image.JPG"
               alt="Profile"
               className="w-full h-full object-cover transition duration-500 hover:scale-110"
             />
